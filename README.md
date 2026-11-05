@@ -1,5 +1,6 @@
 # GCP Sensitive Data Protection (SDP) Governance & Precision Benchmark
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrianReevz/gcp-sdp-governance-benchmark/blob/main/notebooks/sdp_detection_and_governance_benchmark.ipynb)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Google Cloud Platform](https://img.shields.io/badge/Google_Cloud-Sensitive_Data_Protection-4285F4?logo=google-cloud&logoColor=white)](https://cloud.google.com/sensitive-data-protection)
 [![BigQuery](https://img.shields.io/badge/Google_Cloud-BigQuery-669DF6?logo=googlebigquery&logoColor=white)](https://cloud.google.com/bigquery)
@@ -121,6 +122,13 @@ gcp-sdp-governance-benchmark/
 
 ### Environment Setup & Execution
 
+#### Option A: Run in Hosted Google Colab (Zero Local Setup)
+1. Click **[Open in Colab](https://colab.research.google.com/github/BrianReevz/gcp-sdp-governance-benchmark/blob/main/notebooks/sdp_detection_and_governance_benchmark.ipynb)**.
+2. In **Step 1**, the notebook automatically clones the repository (`data/samples/` and `scripts/`) into the ephemeral Colab VM (`/content`) and authenticates via `google.colab.auth.authenticate_user()`.
+3. In **Step 2**, enter your `PROJECT_ID` in the Colab form field and keep `PROVISION_CLOUD_STORES_IF_MISSING = True` checked—the notebook will automatically provision the BigQuery dataset (`fintech_sdp_benchmark`), load the 1,200 synthetic rows, create/upload the GCS support logs bucket, and attach `quota_project_id=PROJECT_ID` to all Cloud SDP API requests.
+
+#### Option B: Run Locally or in Vertex AI Workbench
+
 ```bash
 # 1. Create and activate an isolated Python virtual environment
 python3 -m venv .venv
@@ -136,7 +144,7 @@ source .venv/bin/activate
 chmod +x scripts/deploy_test_stores.sh
 ./scripts/deploy_test_stores.sh
 
-# 5. Launch Jupyter or open notebooks/sdp_detection_and_governance_benchmark.ipynb in Google Colab
+# 5. Launch Jupyter or open notebooks/sdp_detection_and_governance_benchmark.ipynb
 ```
 
 ---
